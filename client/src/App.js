@@ -19,7 +19,13 @@ function App() {
     }
 
   const getSpotifyRecs = async () => {
-    const recs = await fetch('/recommendations').then(res => res).catch(err => {throw new Error(err)})
+    const recs = await fetch('/recommendations')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      return data
+    })
+    .catch(err => {throw new Error(err)})
     console.log('recs', recs)
   }
 
