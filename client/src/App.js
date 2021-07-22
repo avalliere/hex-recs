@@ -18,14 +18,15 @@ function App() {
       return apiState(body.express)
     }
 
-  const getAuthToken = () => {
-    fetch('/spotifyToken')
+  const getSpotifyRecs = async () => {
+    const recs = await fetch('/recommendations').then(res => res).catch(err => {throw new Error(err)})
+    console.log('recs', recs)
   }
 
 
   return (
     <div className="App">
-      <button onClick={() => getAuthToken()}>Get token</button>
+      <button onClick={() => getSpotifyRecs()}>Get token</button>
       <h1>API Response: {api}</h1>
     </div>
   );
