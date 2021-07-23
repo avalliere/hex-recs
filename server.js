@@ -69,7 +69,6 @@ const getSpotifyToken = async () => {
 app.get('/recommendations', async function (req, res) {
   // receives rec info
   // console.log(req)
-  console.log('in recs endpoint!!!!!!!')
   // 1 - call getSpotifyToken() await its token 
   
     let token = await getSpotifyToken()

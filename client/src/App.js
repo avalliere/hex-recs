@@ -18,15 +18,21 @@ function App() {
       return apiState(body.express)
     }
 
+  const [recs, setRecs] = useState([])
+  useEffect(() => {
+    // getSpotifyRecs();
+  })
+
   const getSpotifyRecs = async () => {
     const recs = await fetch('/recommendations')
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      return data
+      console.log(data.recs.tracks)
+      setRecs(data.recs.tracks)
+      // return data
     })
     .catch(err => {throw new Error(err)})
-    console.log('recs', recs)
+    // console.log('recs', recs)
   }
 
 
@@ -34,6 +40,12 @@ function App() {
     <div className="App">
       <button onClick={() => getSpotifyRecs()}>Get token</button>
       <h1>API Response: {api}</h1>
+      { recs?.map(rec=> {
+        console.log('-----REACT rec', rec)
+        return(
+          <p>{rec.name}</p>
+        )
+      })}
     </div>
   );
 }
