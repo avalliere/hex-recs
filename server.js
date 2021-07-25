@@ -67,26 +67,13 @@ const getSpotifyToken = async () => {
 }
 
 app.get('/recommendations', async function (req, res) {
-  // receives rec info
-  // console.log(req)
-  // 1 - call getSpotifyToken() await its token 
-  
+    const query = req.query;
     let token = await getSpotifyToken()
-    let recs = await getRecs(token)   
-    // console.log('recsss', recs?.data)
+    let recs = await getRecs(token, query)   
     res.status(200).json({ recs: recs?.data })
- 
-
-
-  // // 2 - use token to get recs frmo spoitfy
-  // let recs = await getRecs(token)
-  // // 3 - return those recs
-  // return recs
 });
 
-const getRecs = async (token) => {
-  // console.log('in get recs!!!!!!')
-  // console.log('+++++ recs token', token)
+const getRecs = async (token, query) => {
   const seedArtists = '4NHQUGzhtTLFvgF5SZesLK'
   const recsHeaders = {
     headers: {
@@ -95,7 +82,13 @@ const getRecs = async (token) => {
       Authorization: `Bearer ${token}`
     }
   }
-  const recs = await axios.get(`https://api.spotify.com/v1/recommendations?seed_artists=${seedArtists}`, recsHeaders)
+
+  const params = Object.entries(query).map( keyValPair => {
+    const [ key, val ] = keyValPair;
+    return `&${key}=${val}`;
+  }).join().replace(',', '');
+
+  const recs = await axios.get(`https://api.spotify.com/v1/recommendations?seed_artists=${seedArtists}${params}`, recsHeaders)
     .then(res => {
       return res;
     }).catch(err => {

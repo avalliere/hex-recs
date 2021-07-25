@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -20,30 +19,28 @@ function App() {
 
   const [recs, setRecs] = useState([])
   useEffect(() => {
-    // getSpotifyRecs();
   })
 
-  const getSpotifyRecs = async () => {
-    const recs = await fetch('/recommendations')
+  const getSpotifyRecs = async (params) => {
+    const recs = await fetch('/recommendations?' + new URLSearchParams({
+      ...params
+    }))
     .then(res => res.json())
     .then(data => {
       console.log(data.recs.tracks)
       setRecs(data.recs.tracks)
-      // return data
     })
     .catch(err => {throw new Error(err)})
-    // console.log('recs', recs)
   }
 
 
   return (
     <div className="App">
-      <button onClick={() => getSpotifyRecs()}>Get token</button>
+      <button onClick={() => getSpotifyRecs({min_tempo: 140})}>Get token</button>
       <h1>API Response: {api}</h1>
       { recs?.map(rec=> {
-        console.log('-----REACT rec', rec)
         return(
-          <p>{rec.name}</p>
+          <p key={rec.id}>{rec.artists[0].name} : {rec.name}</p>
         )
       })}
     </div>
