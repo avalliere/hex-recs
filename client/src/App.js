@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Color from './components/Color';
 
 function App() {
 
-  const [api, apiState] = useState();
-  useEffect(() => {
-    callApi();
-  })
-
-  const callApi = async () => {
-      const response = await fetch('/api/hello')
-      const body = await response.json()
-
-      if (response.status !== 200) throw Error(body.message)
-
-      return apiState(body.express)
-    }
-
   const [recs, setRecs] = useState([])
-  useEffect(() => {
-  })
+  const [selectedColor, setSelectedColor] = useState()
 
-  const getSpotifyRecs = async (params) => {
-    const recs = await fetch('/recommendations?' + new URLSearchParams({
+  const paramLookup = {
+    '#f5f0af': { min_tempo: 140 },
+    '#0f50af': { min_tempo: 80 }
+  }
+
+  const getSpotifyRecs = async () => {
+    const params = paramLookup[selectedColor];
+
+    await fetch('/recommendations?' + new URLSearchParams({
       ...params
     }))
     .then(res => res.json())
@@ -36,13 +29,14 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => getSpotifyRecs({min_tempo: 140})}>Get token</button>
-      <h1>API Response: {api}</h1>
-      { recs?.map(rec=> {
-        return(
-          <p key={rec.id}>{rec.artists[0].name} : {rec.name}</p>
-        )
-      })}
+      <button onClick={() => getSpotifyRecs()}>Get recs</button>
+      <Color selectedColor={selectedColor} setSelectedColor={setSelectedColor} colorHex='#f5f0af' />
+      <Color selectedColor={selectedColor} setSelectedColor={setSelectedColor} colorHex='#0f50af' />
+     {recs?.map(rec=> {
+      return(
+        <p key={rec.id}>{rec.artists[0].name} : {rec.name}</p>
+      )
+    })}   
     </div>
   );
 }

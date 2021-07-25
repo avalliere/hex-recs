@@ -88,6 +88,8 @@ const getRecs = async (token, query) => {
     return `&${key}=${val}`;
   }).join().replace(',', '');
 
+  console.log('PARAMS', params)
+  
   const recs = await axios.get(`https://api.spotify.com/v1/recommendations?seed_artists=${seedArtists}${params}`, recsHeaders)
     .then(res => {
       return res;
