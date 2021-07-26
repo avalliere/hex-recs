@@ -7,3 +7,8 @@
   height: 100px;
   width: 100px;
 }
+
+.track-list {
+  display: flex;
+  flex-direction: column;
+}

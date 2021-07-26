@@ -1,31 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 import Color from './components/Color';
+import Track from './components/Track';
 
 function App() {
   const [recs, setRecs] = useState([]);
   const [selectedColor, setSelectedColor] = useState();
 
-  const paramLookup = {
-    '#f0826c': { min_tempo: 140 },
-    '#98f06c': { min_tempo: 80 },
-    '#6cdaf0': {},
-    '#160c1b': {},
-    '#8f6cf0': {},
-  };
-
   const getSpotifyRecs = async () => {
-    // const params = paramLookup[selectedColor];
     const params = { selectedColor };
-    // { selectedColor: '#...' }
-    await fetch(
-      '/recommendations?' +
-        // new URLSearchParams({
-        //   ...params,
-
-        // })
-        new URLSearchParams(params)
-    )
+    await fetch('/recommendations?' + new URLSearchParams(params))
       .then((res) => res.json())
       .then((data) => {
         console.log(data.recs.tracks);
@@ -64,13 +48,11 @@ function App() {
         setSelectedColor={setSelectedColor}
         colorHex="#8f6cf0"
       />
-      {recs?.map((rec) => {
-        return (
-          <p key={rec.id}>
-            {rec.artists[0].name} : {rec.name}
-          </p>
-        );
-      })}
+      <div className="track-list">
+        {recs?.map((rec) => {
+          return <Track key={rec.id} rec={rec} />;
+        })}
+      </div>
     </div>
   );
 }
