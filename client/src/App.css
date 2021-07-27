@@ -1,14 +1,45 @@
+@font-face {
+  font-family: 'format-1452';
+  src: local('format-1452'), url('./assets/Format_1452.woff');
+}
+
+body {
+  background-color: #c46cf0;
+  height: 100vh;
+}
+
 .App {
   text-align: center;
-  background-color: #c46cf0;
+}
+
+h1 {
+  font-family: 'format-1452';
+  font-size: 10vh;
+}
+
+.outer-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.color-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .color-square {
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
 }
 
 .track-list {
   display: flex;
   flex-direction: column;
+  margin-right: 0px;
+}
+
+img {
+  align-self: center;
 }
