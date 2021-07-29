@@ -63,6 +63,9 @@ function App() {
         </section>
         {recs.length > 0 && (
           <section className="track-list">
+            <button id="close-recs-button" onClick={() => setRecs([])}>
+              X
+            </button>
             {recs?.map((rec) => {
               return <Track key={rec.id} rec={rec} className="track-item" />;
             })}
