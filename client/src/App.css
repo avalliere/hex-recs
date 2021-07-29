@@ -14,7 +14,8 @@ body {
 
 h1 {
   font-family: 'format-1452';
-  font-size: 10vh;
+  font-size: 5em;
+  margin-top: 10px;
 }
 
 .cauldron-img {
@@ -49,12 +50,15 @@ h1 {
 
 #get-recs-button {
   width: 100%;
-  height: 35px;
+  height: 50px;
   margin: 20px;
   background-color: black;
   border-style: none;
   font-family: 'format-1452';
   color: lime;
+  border-radius: 13px;
+  font-size: 2em;
+  box-shadow: 0 0 8px lime;
 }
 
 .track-list {
