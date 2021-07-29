@@ -66,12 +66,12 @@ h1 {
   flex-direction: column;
   margin-right: 0px;
   /* margin: 20px auto; */
-  /* width: 500px; */
+  width: 500px;
 }
 
 .track-item {
   background-color: #c46cf0;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 img {
