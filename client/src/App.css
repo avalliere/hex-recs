@@ -31,7 +31,7 @@ p {
 
 .outer-flex {
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap;
   justify-content: space-around;
 }
 
@@ -40,7 +40,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
-  height: 150px;
+  min-height: 150px;
   flex-wrap: wrap;
   padding: 40px;
 }
@@ -89,7 +89,7 @@ p {
   margin-right: 0px;
   /* margin: 20px auto; */
   width: 500px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .track-item {
