@@ -16,6 +16,13 @@ h1 {
   font-family: 'format-1452';
   font-size: 5em;
   margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-family: 'format-1452';
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .cauldron-img {
@@ -82,6 +89,7 @@ h1 {
   margin-right: 0px;
   /* margin: 20px auto; */
   width: 500px;
+  margin-top: 50px;
 }
 
 .track-item {
