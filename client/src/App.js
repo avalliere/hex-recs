@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <h1>Hex-Recs</h1>
       <p>
-        Manifest a playlist based on color. Pick your hex and the spell is cast!
+        Manifest a playlist based on color. Pick your hex and cast the spell!
       </p>
       <section className="outer-flex">
         <section className="color-container">

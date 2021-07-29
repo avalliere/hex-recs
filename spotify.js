@@ -20,10 +20,10 @@ const STEVIE_NICKS = '7crPfGd2k81ekOoSqQKWWz';
 
 const queryParamsString = {
   '#f0826c': `&seed_artists=${ANIMAL_COLLECTIVE},${RAMONES}&min_energy=0.6&min_danceability=0.7&min_valence=0.7`,
-  '#98f06c': `&seed_artists=${PIXIES},${RAMONES}&min_valence=0.5`,
+  '#98f06c': `&seed_artists=${PIXIES},${RAMONES}&min_valence=0.6&min_energy=0.7`,
   '#6cdaf0': `&seed_tracks=${AGE_OF_CONSENT}&seed_artists=${FLEET_FOXES},${VELVET_UNDERGROUND}&min_valence=0.7`,
   '#160c1b': `&seed_tracks=${KILLING_MOON}&seed_artists=${JESUS_MARY_CHAIN},${SIOUXSIE_BANSHEES}&max_valence=0.2`,
-  '#8f6cf0': `&seed_artists=${STEVIE_NICKS},${SIOUXSIE_BANSHEES}&mode=0&max_valence=0.3`,
+  '#8f6cf0': `&seed_artists=${STEVIE_NICKS},${SIOUXSIE_BANSHEES}&mode=0&max_valence=0.3&max_energy=0.3`,
 };
 
 const getSpotifyToken = async () => {
