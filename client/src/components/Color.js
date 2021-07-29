@@ -6,7 +6,7 @@ const Color = ({ selectedColor, setSelectedColor, colorHex }) => {
       className="color-square"
       style={{
         backgroundColor: colorHex,
-        border: isSelected ? '1px solid red' : '',
+        boxShadow: isSelected ? 'white 0px 0px 9px 2px' : '',
       }}
       onClick={() => setSelectedColor(colorHex)}
     ></div>

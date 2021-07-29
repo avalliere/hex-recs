@@ -29,36 +29,45 @@ function App() {
           <Color
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
+            className="color-item"
             colorHex="#f0826c"
           />
           <Color
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
+            className="color-item"
             colorHex="#98f06c"
           />
           <Color
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
+            className="color-item"
             colorHex="#6cdaf0"
           />
           <Color
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
+            className="color-item"
             colorHex="#160c1b"
           />
           <Color
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
+            className="color-item"
             colorHex="#8f6cf0"
           />
-          <button onClick={() => getSpotifyRecs()}>Get recs</button>
+          <button id="get-recs-button" onClick={() => getSpotifyRecs()}>
+            {selectedColor ? 'Get Hex-Recs!' : 'Choose a Color...'}
+          </button>
+          <img className="cauldron-img" src={cauldron} />
         </section>
-        <img src={cauldron} />
-        <section className="track-list">
-          {recs?.map((rec) => {
-            return <Track key={rec.id} rec={rec} />;
-          })}
-        </section>
+        {recs.length > 0 && (
+          <section className="track-list">
+            {recs?.map((rec) => {
+              return <Track key={rec.id} rec={rec} className="track-item" />;
+            })}
+          </section>
+        )}
       </section>
     </div>
   );
