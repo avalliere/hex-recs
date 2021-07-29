@@ -19,11 +19,11 @@ const SIOUXSIE_BANSHEES = '1n65zfwYIj5kKEtNgxUlWb';
 const STEVIE_NICKS = '7crPfGd2k81ekOoSqQKWWz';
 
 const queryParamsString = {
-  '#f0826c': `seed_artists=${ANIMAL_COLLECTIVE},${RAMONES}&min_energy=0.6&min_danceability=0.7&min_valence=0.7`,
-  '#98f06c': `seed_artists=${PIXIES},${RAMONES}&min_valence=0.5`,
-  '#6cdaf0': `seed_tracks=${AGE_OF_CONSENT}&seed_artists=${FLEET_FOXES},${VELVET_UNDERGROUND}&min_valence=0.7`,
-  '#160c1b': `seed_tracks=${KILLING_MOON}&seed_artists=${JESUS_MARY_CHAIN},${SIOUXSIE_BANSHEES}&max_valence=0.2`,
-  '#8f6cf0': `seed_artists=${STEVIE_NICKS},${SIOUXSIE_BANSHEES}&mode=0&max_valence=0.3`,
+  '#f0826c': `&seed_artists=${ANIMAL_COLLECTIVE},${RAMONES}&min_energy=0.6&min_danceability=0.7&min_valence=0.7`,
+  '#98f06c': `&seed_artists=${PIXIES},${RAMONES}&min_valence=0.5`,
+  '#6cdaf0': `&seed_tracks=${AGE_OF_CONSENT}&seed_artists=${FLEET_FOXES},${VELVET_UNDERGROUND}&min_valence=0.7`,
+  '#160c1b': `&seed_tracks=${KILLING_MOON}&seed_artists=${JESUS_MARY_CHAIN},${SIOUXSIE_BANSHEES}&max_valence=0.2`,
+  '#8f6cf0': `&seed_artists=${STEVIE_NICKS},${SIOUXSIE_BANSHEES}&mode=0&max_valence=0.3`,
 };
 
 const getSpotifyToken = async () => {
@@ -66,7 +66,7 @@ const getRecs = async (token, query) => {
 
   const recs = await axios
     .get(
-      `https://api.spotify.com/v1/recommendations?${queryParamsString[selectedColor]}`,
+      `https://api.spotify.com/v1/recommendations?limit=7${queryParamsString[selectedColor]}`,
       recsHeaders
     )
     .then((res) => {
